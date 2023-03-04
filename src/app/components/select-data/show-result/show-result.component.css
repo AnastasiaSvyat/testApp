@@ -1,0 +1,51 @@
+.img{
+    position: relative;
+}
+
+.context{
+    text-align: center;
+}
+
+button{
+    border: 1px solid red !important;
+    margin-top: 20px;
+}
+  
+::ng-deep .icon-outside .img{
+    top: -52px;
+    left: 120px;
+}
+  
+::ng-deep .icon-outside .mat-dialog-container {
+   overflow: unset
+}
+
+@media screen and (max-width: 760px) {
+    .img{
+       display: none;
+    }
+}
+
+@media screen and (min-width: 760px) {
+    .closeBtn, .title img{
+       display: none !important;
+    }
+}
+
+.title img{
+    width: 25px;
+    height: 25px;
+    margin-top: 3px;
+}
+
+.title{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.closeBtn{
+    width: 100%;
+    display: flex;
+    justify-content: end;
+}

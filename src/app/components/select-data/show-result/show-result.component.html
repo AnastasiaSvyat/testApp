@@ -1,0 +1,36 @@
+<div class="img">
+    <img src="https://www.doctoride.com/assets/img/dialog/search.svg" alt="img">
+</div>
+
+<div class="context">
+
+    <div class="closeBtn">
+        <mat-icon (click)='close()'>close</mat-icon>
+    </div>
+
+    <div class="title">
+            <img src="https://www.doctoride.com/assets/img/dialog/search.svg" alt="img">
+            <h1>
+                Result
+            </h1>
+    </div>
+  
+    <div>
+        <span>start:</span>
+        <span>
+            {{data.startDate}}
+        </span>
+    </div>
+
+    <div>
+        <span>end:</span>
+        <span>
+            {{data.endDate}}
+        </span>
+    </div>
+
+    <div>
+        <button (click)='close()' mat-stroked-button color="warn">Close</button>
+    </div>
+    
+</div>

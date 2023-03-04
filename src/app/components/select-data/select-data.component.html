@@ -1,0 +1,99 @@
+<div class="select-data-container">
+
+    <div class="select-data-box">
+
+        <div class="formBox">
+
+            <form [formGroup]="form" mat-dialog-content>
+
+                <div class="startContainer">
+                    <div class="textStartAnd">
+                        <span class="fs18 fw700">
+                            Start
+                        </span>
+                        <span class="fs14 fw100">
+                            * Required
+                        </span>
+                    </div>
+
+                    <mat-form-field class="w45" appearance="outline" floatLabel="always">
+                        <mat-label>Start
+                            <mat-icon class="icon ac_unitIcon" matSuffix>*</mat-icon>
+                        </mat-label>
+                        <input (dateChange)="onDateChange($event)" formControlName="startDate"
+                            [matDatepicker]="pickerStart" (focus)="pickerStart.open()" (click)="pickerStart.open()"
+                            matInput readonly>
+                        <mat-datepicker-toggle matSuffix [for]="pickerStart">
+                        </mat-datepicker-toggle>
+                        <mat-datepicker #pickerStart></mat-datepicker>
+                    </mat-form-field>
+
+                    <div class="w10 textAt fw700 fs18">
+                        at
+                    </div>
+
+                    <mat-form-field class="w35" appearance="outline" floatLabel="always">
+                        <mat-label>Time start
+                            <mat-icon class="icon ac_unitIcon" matSuffix>*</mat-icon>
+                        </mat-label>
+                        <mat-select formControlName="startTimeSelect">
+                            <mat-option (onSelectionChange)="selectTime($event, time)" *ngFor="let time of timeList"
+                                [value]="time.time">
+                                {{time.time}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+
+                <div class="endContainer mt30">
+
+                    <div class="textStartAnd">
+                        <span class="fs18 fw700">
+                            End
+                        </span>
+                        <span class="fs14 fw100">
+                            * Required
+                        </span>
+                    </div>
+
+                    <mat-form-field class="w45" appearance="outline" floatLabel="always">
+                        <mat-label>End
+                            <mat-icon class="icon ac_unitIcon" matSuffix>*</mat-icon>
+                        </mat-label>
+                        <input formControlName="endDate" [matDatepicker]="pickerEnd" (focus)="pickerEnd.open()"
+                            (click)="pickerEnd.open()" matInput pickerEnd>
+                        <mat-datepicker-toggle matSuffix [for]="pickerEnd">
+                        </mat-datepicker-toggle>
+                        <mat-datepicker #pickerEnd></mat-datepicker>
+                        <mat-error *ngIf="form.controls.endDate.hasError('checkDate')">
+                            Invalid date
+                        </mat-error>
+                    </mat-form-field>
+
+                    <div class="w10 textAt fw700 fs18">
+                        at
+                    </div>
+
+                    <mat-form-field class="w35" appearance="outline" floatLabel="always">
+                        <mat-label>Time end
+                            <mat-icon class="icon ac_unitIcon" matSuffix>*</mat-icon>
+                        </mat-label>
+                        <mat-select formControlName="endTimeSelect">
+                            <mat-option *ngFor="let time of timeList" [value]="time.time">
+                                {{time.time}}
+                            </mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="form.controls.endTimeSelect.hasError('checkTime')">
+                            Invalid time
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+
+                <div class="mt30 telBtn">
+                    <button [disabled]='form.invalid' (click)='submit()' mat-raised-button
+                        color="primary">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
